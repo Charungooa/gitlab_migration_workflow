@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # Needed for Terraform to manage the GitHub repo
-      secrets: write   # Needed for creating GitHub Actions secrets
 
     steps:
       # Checkout the repository containing Terraform files and migrate.bash

@@ -5,7 +5,7 @@ github_repo_name  = "github_myapp_supplychain"
 # gitlab_token      = "glpat_yourGitLabToken"
 key_vault_name    = "myAppKeyVault011"
 azure_resource_group = "gitlab-migration-rg-supplychain"
-#key = "DOCKER_REGISTRY_PASSWORD"
+
 
 
 # azure_tenant_id   = "your-tenant-id-guid"

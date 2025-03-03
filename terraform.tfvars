@@ -6,7 +6,5 @@ github_repo_name  = "github_myapp_supplychain"
 key_vault_name    = "myAppKeyVault011"
 azure_resource_group = "gitlab-migration-rg-supplychain"
 
-
-
 # azure_tenant_id   = "your-tenant-id-guid"
 # azure_object_id   = "your-user-or-sp-object-guid"

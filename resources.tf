@@ -76,32 +76,6 @@ resource "github_repository" "new_repo" {
 
 
 
-resource "null_resource" "migrate_gitlab_to_github" {
-  depends_on = [github_repository.new_repo]
-
-  # Force re-run each time for testing
-  triggers = {
-    run_id = timestamp()
-  }
-
-  provisioner "local-exec" {
-    interpreter = ["cmd", "/c"]
-    command = "migrate.bat"
-    environment = {
-      GITLAB_REPO  = var.gitlab_repo
-      GITHUB_TOKEN = var.github_token
-      GITHUB_OWNER = var.github_owner
-      GITHUB_REPO  = var.github_repo_name
-    }
-  }
-}
-
-###################################
-# Null resource for bash script   #
-#  execution                      #
-###################################
-
-# resources.tf
 # resource "null_resource" "migrate_gitlab_to_github" {
 #   depends_on = [github_repository.new_repo]
 
@@ -111,8 +85,8 @@ resource "null_resource" "migrate_gitlab_to_github" {
 #   }
 
 #   provisioner "local-exec" {
-#     interpreter = ["bash", "-c"]
-#     command     = "./migrate.bash"  # Assumes migrate.bash is in the root of the repo
+#     interpreter = ["cmd", "/c"]
+#     command = "migrate.bat"
 #     environment = {
 #       GITLAB_REPO  = var.gitlab_repo
 #       GITHUB_TOKEN = var.github_token
@@ -121,3 +95,29 @@ resource "null_resource" "migrate_gitlab_to_github" {
 #     }
 #   }
 # }
+
+###################################
+# Null resource for bash script   #
+#  execution                      #
+###################################
+
+resources.tf
+resource "null_resource" "migrate_gitlab_to_github" {
+  depends_on = [github_repository.new_repo]
+
+  # Force re-run each time for testing
+  triggers = {
+    run_id = timestamp()
+  }
+
+  provisioner "local-exec" {
+    interpreter = ["bash", "-c"]
+    command     = "./migrate.bash"  # Assumes migrate.bash is in the root of the repo
+    environment = {
+      GITLAB_REPO  = var.gitlab_repo
+      GITHUB_TOKEN = var.github_token
+      GITHUB_OWNER = var.github_owner
+      GITHUB_REPO  = var.github_repo_name
+    }
+  }
+}

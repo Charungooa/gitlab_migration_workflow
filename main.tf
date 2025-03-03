@@ -44,11 +44,11 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    # resource_group_name   = "Backend-rg"
-    # storage_account_name  = "backednstg755"
-    # container_name        = "backend-container"
-    # #key                   = "terraform.tfstate"
-    # key                   = "statefiles/${var.github_repo_name}.tfstate"
+    resource_group_name   = "Backend-rg"
+    storage_account_name  = "backednstg755"
+    container_name        = "backend-container"
+    #key                   = "terraform.tfstate"
+    key                   = "APP.tfstate"
   }
 
 

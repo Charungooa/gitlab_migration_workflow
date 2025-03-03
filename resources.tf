@@ -101,7 +101,6 @@ resource "github_repository" "new_repo" {
 #  execution                      #
 ###################################
 
-resources.tf
 resource "null_resource" "migrate_gitlab_to_github" {
   depends_on = [github_repository.new_repo]
 
